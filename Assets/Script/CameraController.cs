@@ -25,33 +25,34 @@ namespace StarterAssets
         }
 
         // Update is called once per frame
-        void Update()
-        {
-            if (switchCharacter.currentCharacter == duck)
+       void Update()
             {
-                catLook.look = duckLook.look;
-                mouseLook.look = duckLook.look;
+                if (switchCharacter.currentCharacter == duck)
+                {
+                    catLook.look = duckLook.look;
+                    mouseLook.look = duckLook.look;
 
-                catControl.CurrentCamRotation = duckControl.CurrentCamRotation;
-                mouseControl.CurrentCamRotation = duckControl.CurrentCamRotation;
-            }
-            else if (switchCharacter.currentCharacter == cat)
-            {
-                duckLook.look = catLook.look;
-                mouseLook.look = catLook.look;
+                    catControl.UpdateCameraRotation(duckControl.CurrentCamRotation);
+                    mouseControl.UpdateCameraRotation(duckControl.CurrentCamRotation);
+                }
+                else if (switchCharacter.currentCharacter == cat)
+                {
+                    duckLook.look = catLook.look;
+                    mouseLook.look = catLook.look;
 
-                duckControl.CurrentCamRotation = catControl.CurrentCamRotation;
-                mouseControl.CurrentCamRotation = catControl.CurrentCamRotation;
-            }
-            else if (switchCharacter.currentCharacter == mouse)
-            {
-                catLook.look = mouseLook.look;
-                duckLook.look = mouseLook.look;
+                    duckControl.UpdateCameraRotation(catControl.CurrentCamRotation);
+                    mouseControl.UpdateCameraRotation(catControl.CurrentCamRotation);
+                }
+                else if (switchCharacter.currentCharacter == mouse)
+                {
+                    catLook.look = mouseLook.look;
+                    duckLook.look = mouseLook.look;
 
-                catControl.CurrentCamRotation = mouseControl.CurrentCamRotation;
-                duckControl.CurrentCamRotation = mouseControl.CurrentCamRotation;
+                    catControl.UpdateCameraRotation(mouseControl.CurrentCamRotation);
+                    duckControl.UpdateCameraRotation(mouseControl.CurrentCamRotation);
+                }
             }
-        }
+        
 
         // Call this method to switch the current character
     }

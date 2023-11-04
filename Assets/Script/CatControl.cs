@@ -182,7 +182,11 @@ namespace StarterAssets
             Move();
             
         }
-
+        public void UpdateCameraRotation(Quaternion newRotation)
+        {
+            _cinemachineTargetYaw = newRotation.eulerAngles.y;
+            // Update other necessary logic here
+        }
         private void LateUpdate()
         {
             CameraRotation();
@@ -249,10 +253,6 @@ namespace StarterAssets
                     // Reset character physics to normal values
                     // Re-enable any disabled scripts
                 }
-            }
-            else
-            {
-
             }
 
             Debug.DrawRay(transform.position, Vector3.down * waterCheckDistance, Color.red); // Add this line for debugging
